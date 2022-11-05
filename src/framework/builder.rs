@@ -192,11 +192,6 @@ and enable MESSAGE_CONTENT in your Discord bot dashboard
 
         // Build framework options by concatenating user-set options with commands and owners
         options.commands.extend(self.commands);
-        if self.initialize_owners {
-            if let Err(e) = super::insert_owners_from_http(&token, &mut options.owners).await {
-                log::warn!("Failed to insert owners from HTTP: {}", e);
-            }
-        }
 
         // Create serenity client
         let mut client_builder = serenity::ClientBuilder::new(token, intents);
